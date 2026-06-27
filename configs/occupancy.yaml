@@ -1,0 +1,45 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Occupancy Estimation — Experiment Configuration
+# ─────────────────────────────────────────────────────────────────────────────
+task: occupancy
+
+# Domain pair
+source: data/occupancy/office_A.csv
+target: data/occupancy/office_C.csv
+
+# Known classes (values in the 'labels' column that exist in BOTH domains)
+# office_A has classes {0,1,2,3}; office_C has {0,1,2,3,4}
+# → class 4 in the target is "unknown" / target-private
+known_classes: [0, 1, 2, 3]
+num_classes: 4   # number of known classes  C_known
+
+# Preprocessing
+seq_len: 10      # sliding window length (time steps × 600 s = 100 min)
+stride: 1        # window stride
+
+# Training
+batch_size: 64
+epochs: 80
+lr: 0.001
+weight_decay: 1.0e-4
+seed: 42
+
+# Method-specific overrides (merged with defaults at runtime)
+ppot:
+  ot_mass: 0.5
+  ot_eps: 0.05
+  tau_ent: 0.6
+
+mlnet:
+  knn_k: 5
+  mixup_alpha: 0.2
+  tau: 0.5
+
+eiakda:
+  knn_k: 7
+  q_low: 0.33
+  q_high: 0.67
+
+lead:
+  src_epochs: 40
+  tgt_epochs: 40

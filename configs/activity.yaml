@@ -1,0 +1,48 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Activity Recognition — Experiment Configuration
+# ─────────────────────────────────────────────────────────────────────────────
+task: activity
+
+# Domain pair (WSU Tapia 2004 dataset — two smart apartments)
+source: data/activity/apartment_A.csv
+target: data/activity/apartment_B.csv
+
+# Activity label map (raw sensor codes → human-readable)
+#   15 → Preparing Food
+#   60 → Watching TV
+#   65 → Cleaning
+#   70 → Listening to Music    ← target-private (unknown)
+#   85 → Toileting             ← target-private (unknown)
+known_classes: [15, 60, 65]
+num_classes: 3   # C_known
+
+# Preprocessing
+seq_len: 5       # sliding window (5 time steps)
+stride: 1
+
+# Training
+batch_size: 64
+epochs: 80
+lr: 0.001
+weight_decay: 1.0e-4
+seed: 42
+
+# Method-specific overrides
+ppot:
+  ot_mass: 0.5
+  ot_eps: 0.05
+  tau_ent: 0.55
+
+mlnet:
+  knn_k: 7
+  mixup_alpha: 0.3
+  tau: 0.5
+
+eiakda:
+  knn_k: 7
+  q_low: 0.33
+  q_high: 0.67
+
+lead:
+  src_epochs: 40
+  tgt_epochs: 40
