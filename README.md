@@ -1,7 +1,8 @@
-# Universal-Domain-Adaptation-for-Cross-Building-Occupancy-Estimation-and-Activity-Recognition
+# Universal Domain Adaptation for Occupant-Centric Sensing Under
+Partial Label-Space Overlap
 
-**Official repository** of the "Universal Domain Adaptation for Cross-Building Occupancy
-Estimation and Activity Recognition Under Sensor Heterogeneity"
+**Official repository** of the "Universal Domain Adaptation for Occupant-Centric Sensing Under
+Partial Label-Space Overlap"
 
 
 
