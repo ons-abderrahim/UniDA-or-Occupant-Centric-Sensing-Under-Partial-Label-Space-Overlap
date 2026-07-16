@@ -1,4 +1,4 @@
-# Universal Domain Adaptation for Occupant-Centric Sensing Under Partial Label-Space Overlap
+# UniDA for Occupant-Centric Sensing Under Partial Label-Space Overlap
 
 **Official repository** of the "Universal Domain Adaptation for Occupant-Centric Sensing Under Partial Label-Space Overlap"
 
